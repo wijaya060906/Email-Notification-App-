@@ -1,4 +1,4 @@
-# Employee Email Notification Application
+# 📧 Employee Email Notification Application 📧
 
 ![GitHub Repo Size](https://img.shields.io/github/repo-size/username/repo)
 
