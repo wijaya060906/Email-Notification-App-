@@ -53,6 +53,18 @@ form .btn-primary {
 }
 
   </style>
+
+  <!-- Tambahkan di bagian <head> -->
+<link
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+rel="stylesheet"
+/>
+<script
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+defer
+></script>
+
+
 </head>
 
 <body>
@@ -148,47 +160,38 @@ form .btn-primary {
                       <td>{{ $karyawan->gaji }}</td>
                       <td>{{ $karyawan->batas_usia_pensiun }}</td>
                       <td>
-                        <div class="dropdown">
+                        <div class="btn-group">
                           <button
-                            class="btn btn-secondary dropdown-toggle"
                             type="button"
-                            id="dropdownMenuButton{{ $karyawan->id }}"
+                            class="btn btn-primary btn-sm dropdown-toggle"
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
                           >
-                            ...
+                            Aksi
                           </button>
-                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ $karyawan->id }}">
-                            <li>
-                              <a class="dropdown-item" href="{{ route('karyawan.notifyGaji', $karyawan->id) }}">
-                                Kirim Notifikasi Gaji
-                              </a>
-                            </li>
-                            <li>
-                              <a class="dropdown-item" href="{{ route('karyawan.notifyPangkat', $karyawan->id) }}">
-                                Kirim Notifikasi Pangkat
-                              </a>
-                            </li>
+                          <ul class="dropdown-menu">
                             <li>
                               <a class="dropdown-item" href="{{ route('karyawan.edit', $karyawan->id) }}">
-                                Edit
+                                <i class="bi bi-pencil"></i> Edit
                               </a>
                             </li>
                             <li>
                               <form
                                 action="{{ route('karyawan.destroy', $karyawan->id) }}"
                                 method="POST"
-                                style="display: inline;"
                                 onsubmit="return confirm('Apakah Anda yakin ingin menghapus karyawan ini?')"
                               >
                                 @csrf
                                 @method('DELETE')
-                                <button class="dropdown-item text-danger" type="submit">Delete</button>
+                                <button class="dropdown-item text-danger" type="submit">
+                                  <i class="bi bi-trash"></i> Delete
+                                </button>
                               </form>
                             </li>
                           </ul>
                         </div>
                       </td>
+                      
                       
                     </tr>
                     @endforeach

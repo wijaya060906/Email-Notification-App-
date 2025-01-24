@@ -27,8 +27,32 @@ use Illuminate\Http\Request;
 
 
 Route::get('/', function () {
-    return view('dashboard');
+    // Menghitung total karyawan
+    $totalKaryawan = Karyawan::count();
+
+    // Menghitung total Gmail terdaftar
+    $totalGmail = Karyawan::where('email', 'like', '%@gmail.com')->count();
+
+    // Menghitung data tidak lengkap (email atau nomor telepon kosong)
+    $incompleteDataCount = Karyawan::whereNull('email')->count();
+
+    // Menghitung kontrak hampir habis (30 hari ke depan)
+    $contractEndingSoonCount = Karyawan::where('batas_usia_pensiun', '<=', now()->addDays(30))->count();
+
+    // Total notifikasi
+    $totalNotifications = $incompleteDataCount + $contractEndingSoonCount;
+
+    
+
+    return view('dashboard', compact(
+        'totalKaryawan', 
+        'totalGmail', 
+        'incompleteDataCount', 
+        'contractEndingSoonCount', 
+        'totalNotifications'
+    ));
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

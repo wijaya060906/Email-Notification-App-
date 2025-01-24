@@ -27,6 +27,18 @@
                     <div class="container-xxl flex-grow-1 container-p-y">
                         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms /</span> Tambah Karyawan
                         </h4>
+
+                        <!-- Menampilkan pesan kesalahan global -->
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <div class="row">
                             <div class="col-xxl">
                                 <div class="card mb-4">
@@ -46,6 +58,9 @@
                                                         <input type="text" id="nama" class="form-control"
                                                             placeholder="Nama Lengkap" required  name="nama"/>
                                                     </div>
+                                                    @error('nama')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -60,6 +75,9 @@
                                                         <input type="text" id="nip" class="form-control"
                                                             placeholder="Nomor Induk Pegawai" required name="nip"/>
                                                     </div>
+                                                    @error('nip')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -74,6 +92,9 @@
                                                         <input type="email" id="email" class="form-control"
                                                             placeholder="Email Karyawan" required name="email"/>
                                                     </div>
+                                                    @error('email')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -89,6 +110,9 @@
                                                         <input type="date" id="tanggal_lahir" class="form-control"
                                                             required name="tanggal_lahir"/>
                                                     </div>
+                                                    @error('tanggal_lahir')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -102,9 +126,11 @@
                                                           <option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}</option>
                                                       @endforeach
                                                   </select>
+                                                  @error('jabatan_id')
+                                                      <div class="text-danger">{{ $message }}</div>
+                                                  @enderror
                                               </div>
                                           </div>
-
 
                                             <!-- Golongan -->
                                             <div class="row mb-3">
@@ -116,6 +142,9 @@
                                                           <option value="{{ $golongan->id }}">{{ $golongan->nama_golongan }}</option>
                                                       @endforeach
                                                   </select>
+                                                  @error('golongan_id')
+                                                      <div class="text-danger">{{ $message }}</div>
+                                                  @enderror
                                               </div>
                                           </div>
 
@@ -131,6 +160,9 @@
                                                         <input type="date" id="tanggal_naik_pangkat"
                                                             class="form-control" required name="kenaikan_pangkat_terakhir"/>
                                                     </div>
+                                                    @error('kenaikan_pangkat_terakhir')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -146,6 +178,9 @@
                                                         <input type="date" id="kenaikan_gaji_berkala"
                                                             class="form-control" required name="kenaikan_gaji_berkala"/>
                                                     </div>
+                                                    @error('kenaikan_gaji_berkala')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -161,11 +196,14 @@
                                                         <input type="date" id="batas_pensiun" class="form-control"
                                                             required name="batas_usia_pensiun"/>
                                                     </div>
+                                                    @error('batas_usia_pensiun')
+                                                        <div class="text-danger">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
 
-                                                                                        <!-- Gaji -->
-                                                                                        <div class="row mb-3">
+                                            <!-- Gaji -->
+                                            <div class="row mb-3">
                                                                                           <label class="col-sm-2 col-form-label" for="gaji">Gaji</label>
                                                                                           <div class="col-sm-10">
                                                                                               <div class="input-group">
@@ -175,9 +213,11 @@
                                                                                                   <input type="number" id="gaji" class="form-control"
                                                                                                       placeholder="Masukkan Gaji Karyawan" required name="gaji" min="0" step="1000"/>
                                                                                               </div>
+                                                                                              @error('gaji')
+                                                                                                  <div class="text-danger">{{ $message }}</div>
+                                                                                              @enderror
                                                                                           </div>
                                                                                       </div>
-                                          
 
                                             <!-- Submit -->
                                             <div class="row mb-3">

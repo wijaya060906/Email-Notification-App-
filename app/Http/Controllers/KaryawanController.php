@@ -126,12 +126,15 @@ public function update(Request $request, $id)
 
     $karyawan = Karyawan::findOrFail($id);
     $data = $request->all();
-    $data['gaji'] = number_format($request->gaji, 0, ',', '.');
+
+    // Hapus number_format dan simpan langsung nilai gaji sebagai angka
+    $data['gaji'] = $request->gaji;
 
     $karyawan->update($data);
 
     return redirect()->route('karyawan.karyawan')->with('success', 'Data Karyawan berhasil diperbarui!');
 }
+
 
     public function destroy($id)
     {

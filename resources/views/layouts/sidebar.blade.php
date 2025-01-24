@@ -71,7 +71,7 @@
             <span class="app-brand-logo demo">
               <img src="{{ asset('img/hanoman.png') }}" alt="Icon" width="90" height="70">
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">Hanoman</span>
+            <span style="font-weight: bold; font-size: 26px; color: black; font-family: 'jawa','sans-serif';">ANOMAN</span>
           </a>
           <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
             <i class="bx bx-chevron-left bx-sm align-middle"></i>
