@@ -39,7 +39,7 @@ Follow these steps to set up the application:
 
 ```bash
 # Clone the repository
-git clone https://github.com/<your-username>/employee-email-notification.git
+git clone https://github.com/wijaya060906/employee-email-notification.git
 
 # Navigate to the project directory
 cd employee-email-notification
