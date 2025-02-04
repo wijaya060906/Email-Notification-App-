@@ -90,34 +90,53 @@
           <div class="content-wrapper">
             <div class="container-xxl flex-grow-1 container-p-y">
                 <div class="row">
-                    <div class="col-lg-18 mb-15 order-0">
-                        <div class="card custom-card">
-                            <div class="d-flex align-items-end row">
+                    <div class="col-lg-12 mb-15 order-0">
+                        <div class="card custom-card shadow-lg" style="background-color: #343a40; border-radius: 10px; padding: 20px;">
+                            <div class="d-flex align-items-center row">
+                                <!-- Left Side: Text Content -->
                                 <div class="col-sm-7">
                                     <div class="card-body">
-                                        <h5 style="font-family: 'poppins', sans-serif; font-weight: bold; font-size: 26px; color: #8a5f02;">Selamat Datang Di</h5>
-                                        <h5 style="font-family: 'Jawa', sans-serif; font-weight: bold; font-size: 26px; color: black;">ANOMAN</h5>
-                                        <p class="mb-4" style="color: white;">
-                                            Aplikasi Notifikasi Administrasi Kepegawaian
+                                        <h5 class="greeting-title" style="font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 30px; color: #8a5f02;">
+                                            Selamat Datang Di
+                                        </h5>
+                                        <h3 class="app-name" style="font-family: 'Jawa', sans-serif; font-weight: bold; font-size: 36px; color: black;">
+                                            ANOMAN
+                                        </h3>
+                                        <p class="app-description mb-4" style="font-size: 18px; color: #fff; line-height: 1.6;">
+                                            Aplikasi Notifikasi Administrasi Kepegawaian yang memberikan kemudahan bagi Anda dalam mengelola administrasi kepegawaian dengan cara yang lebih efisien dan terorganisir.
                                         </p>
+                                        
                                     </div>
                                 </div>
+                                <!-- Right Side: Image -->
                                 <div class="col-sm-5">
-                                    <div class="card-body pb-0 px-0 px-md-4">
-                                        <img
-                                            src="{{asset('sneat')}}/assets/img/wayang.png"
-                                            height="180"
-                                            alt="View Badge User"
-                                            style="float: right;"
-                                        />
-                                    </div>
-                                </div>
+                                  <div class="card-body pb-0 px-0 px-md-4" style="position: relative;">
+                                      <!-- Wayang Image -->
+                                      <img
+                                          src="{{asset('sneat')}}/assets/img/wayang.png"
+                                          height="200"
+                                          alt="Wayang Image"
+                                          class="img-fluid"
+                                          style="float: right; margin-top: 10px;"
+                                      />
+                                      
+                                      <!-- Logo Image -->
+                                      <img
+                                          src="{{asset('img/hanoman.png')}}"
+                                          height="90"  
+                                          alt="Logo Image"
+                                          style="position: absolute; top: 10px; right: 10px; width: auto; height: 80px;"
+                                      />
+                                  </div>
+                              </div>
+                              
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        
             <!-- Content -->
 
             <div class="container-xxl flex-grow-1 container-p-y">

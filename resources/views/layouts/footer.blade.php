@@ -33,7 +33,7 @@
   <!-- Additional Styling for Footer -->
   <style>
     .footer {
-      background-color: #C5BAFF;
+      background-color: #8a5f02;
       color: #ecf0f1;
       padding: 5px 0;
     }
@@ -90,7 +90,7 @@
             <a href="mailto:wijayayusan9@gmail.com" class="footer-link me-4">wijayayusan9@gmail.com</a>
           </div>
           <div>
-            <span>Portofolio: </span>
+            <span>About Developer : </span>
             <a href="https://yusan-pamungkas-dev.vercel.app/" target="_blank" class="footer-link me-4">yusan-pamungkas-dev.vercel.app</a>
           </div>
         </div>

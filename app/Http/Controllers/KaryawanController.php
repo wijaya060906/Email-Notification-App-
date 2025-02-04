@@ -85,8 +85,8 @@ class KaryawanController extends Controller
 
         // Kirim email "Selamat Datang"
         if ($karyawan->email) {
-            $subject = "Selamat Datang di Perusahaan Yusan";
-            $message = "Halo {$karyawan->nama},\n\nSelamat datang di perusahaan Yusan dan selamat bekerja. Anda akan menerima notifikasi kenaikan pangkat maupun kenaikan gaji di sini, jadi pantau terus ya.\n\nTerima kasih.";
+            $subject = "Selamat Datang di Pengadilan Negeri Mungkid";
+            $message = "Halo {$karyawan->nama},\n\nSelamat datang di Pengadilan Negeri Mungkid dan selamat bekerja. Anda akan menerima notifikasi kenaikan pangkat maupun kenaikan gaji di sini, jadi pantau terus ya.\n\nTerima kasih.";
 
             try {
                 Mail::to($karyawan->email)->send(new NotifikasiKaryawan($subject, $message));

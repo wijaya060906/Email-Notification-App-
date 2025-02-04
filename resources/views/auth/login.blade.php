@@ -5,11 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Hanoman App</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Background image with filter */
+        .bg-login {
+            background-image: url('{{ asset('img/bg_pn.png') }}'); /* Ganti dengan path gambar latar belakang */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            filter: brightness(50%); /* Efek gelap pada gambar */
+        }
+    </style>
 </head>
 <body class="bg-gray-100">
 
+    <!-- Background Image with Filter -->
+    <div class="bg-login"></div>
+
     <!-- Centered Login Form -->
-    <div class="min-h-screen flex justify-center items-center">
+    <div class="min-h-screen flex justify-center items-center relative z-10">
         <div class="max-w-sm w-full bg-white p-8 rounded-lg shadow-lg">
             <!-- Logo Section -->
             <div class="flex justify-center mb-8">

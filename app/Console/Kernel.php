@@ -37,6 +37,10 @@ class Kernel extends ConsoleKernel
                 Mail::to($karyawan->email)->send(new NotifikasiKaryawan($subject, $message));
             }
         })->everyMinute();
+
+        $schedule->call(function () {
+            \Log::info('Laravel Schedule berhasil berjalan!');
+        })->everyMinute();
     }
 
     /**
@@ -48,4 +52,6 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
+    
 }
