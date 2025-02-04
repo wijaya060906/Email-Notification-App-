@@ -72,12 +72,12 @@ Route::middleware('auth')->group(function () {
 
     // Filter berdasarkan gaji (tanggal_kenaikan_gaji <= 2 hari dari sekarang)
     if ($request->has('filter') && $request->filter == 'gaji') {
-        $query->whereDate('tanggal_kenaikan_gaji', '<=', now()->addDays(2));
+        $query->whereDate('tanggal_kenaikan_gaji', '<=', now()->addMonths(6));
     }
 
     // Filter berdasarkan pangkat (tanggal_kenaikan_pangkat <= 2 hari dari sekarang)
     if ($request->has('filter') && $request->filter == 'pangkat') {
-        $query->whereDate('tanggal_kenaikan_pangkat', '<=', now()->addDays(2));
+        $query->whereDate('tanggal_kenaikan_pangkat', '<=', now()->addMonths(6));
     }
 
     // Retrieve the filtered data with pagination

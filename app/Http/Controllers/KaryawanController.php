@@ -63,8 +63,8 @@ class KaryawanController extends Controller
         ]);
 
         // Hitung tanggal kenaikan pangkat dan gaji selanjutnya
-        $tanggalKenaikanPangkat = date('Y-m-d', strtotime($request->kenaikan_pangkat_terakhir . ' +4 days'));
-        $tanggalKenaikanGaji = date('Y-m-d', strtotime($request->kenaikan_gaji_berkala . ' +4 days'));
+        $tanggalKenaikanPangkat = date('Y-m-d', strtotime($request->kenaikan_pangkat_terakhir . ' +4 years'));
+        $tanggalKenaikanGaji = date('Y-m-d', strtotime($request->kenaikan_gaji_berkala . ' +2 years'));
 
         // Simpan data karyawan
         $karyawan = Karyawan::create([

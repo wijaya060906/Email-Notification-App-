@@ -112,8 +112,8 @@ defer
                   <div class="input-group" style="max-width: 400px;">
                     <select name="filter" class="form-select">
                       <option value="" selected>Semua</option>
-                      <option value="gaji">Kenaikan Gaji (2 Hari)</option>
-                      <option value="pangkat">Kenaikan Pangkat (2 Hari)</option>
+                      <option value="gaji">Kenaikan Gaji (6 Bulan)</option>
+                      <option value="pangkat">Kenaikan Pangkat (6 Bulan)</option>
                     </select>
                     <button class="btn btn-primary" type="submit">
                       Filter

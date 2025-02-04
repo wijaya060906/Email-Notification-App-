@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         $schedule->call(function () {
-            $karyawans = Karyawan::whereDate('tanggal_kenaikan_pangkat', now()->addDays(2)->toDateString())->get();
+            $karyawans = Karyawan::whereDate('tanggal_kenaikan_pangkat', now()->addMonths(6)->toDateString())->get();
 
             foreach ($karyawans as $karyawan) {
                 $subject = "Notifikasi Pangkat";
@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
 
         // Notifikasi Gaji
         $schedule->call(function () {
-            $karyawans = Karyawan::whereDate('tanggal_kenaikan_gaji', now()->addDays(2)->toDateString())->get();
+            $karyawans = Karyawan::whereDate('tanggal_kenaikan_gaji', now()->addMonths(6)->toDateString())->get();
 
             foreach ($karyawans as $karyawan) {
                 $subject = "Notifikasi Gaji";
