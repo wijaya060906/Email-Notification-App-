@@ -8,6 +8,8 @@ use App\Models\Jabatan;
 use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
+ 
 
 class KaryawanController extends Controller
 {
@@ -111,6 +113,7 @@ class KaryawanController extends Controller
 
 public function update(Request $request, $id)
 {
+    // Validasi input (tanpa `tanggal_kenaikan_pangkat` dan `tanggal_kenaikan_gaji`)
     $request->validate([
         'nama' => 'required|string|max:255',
         'nip' => 'required|string|max:255',
@@ -124,13 +127,28 @@ public function update(Request $request, $id)
         'gaji' => 'required|numeric',
     ]);
 
+    // Ambil data karyawan berdasarkan ID
     $karyawan = Karyawan::findOrFail($id);
-    $data = $request->all();
 
-    // Hapus number_format dan simpan langsung nilai gaji sebagai angka
-    $data['gaji'] = $request->gaji;
+    // Hitung tanggal kenaikan berdasarkan input terakhir
+    $tanggalKenaikanPangkat = date('Y-m-d', strtotime($request->kenaikan_pangkat_terakhir . ' +4 years'));
+    $tanggalKenaikanGaji = date('Y-m-d', strtotime($request->kenaikan_gaji_berkala . ' +2 years'));
 
-    $karyawan->update($data);
+    // Update data
+    $karyawan->update([
+        'nama' => $request->nama,
+        'nip' => $request->nip,
+        'email' => $request->email,
+        'tanggal_lahir' => $request->tanggal_lahir,
+        'jabatan_id' => $request->jabatan_id,
+        'golongan_id' => $request->golongan_id,
+        'kenaikan_pangkat_terakhir' => $request->kenaikan_pangkat_terakhir,
+        'kenaikan_gaji_berkala' => $request->kenaikan_gaji_berkala,
+        'tanggal_kenaikan_pangkat' => $tanggalKenaikanPangkat, // Dihitung otomatis
+        'tanggal_kenaikan_gaji' => $tanggalKenaikanGaji, // Dihitung otomatis
+        'batas_usia_pensiun' => $request->batas_usia_pensiun,
+        'gaji' => $request->gaji,
+    ]);
 
     return redirect()->route('karyawan.karyawan')->with('success', 'Data Karyawan berhasil diperbarui!');
 }
@@ -162,6 +180,7 @@ public function update(Request $request, $id)
 
     return redirect()->route('karyawan.karyawan', compact('karyawans'));
 }
+
 
 
 

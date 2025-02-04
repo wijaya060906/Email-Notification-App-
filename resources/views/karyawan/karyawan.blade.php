@@ -109,20 +109,22 @@ defer
 
               <div class="d-flex justify-content-end mb-3">
                 <form method="GET" action="{{ route('karyawan.karyawan') }}">
-                  <div class="input-group" style="max-width: 400px;">
-                    <select name="filter" class="form-select">
-                      <option value="" selected>Semua</option>
-                      <option value="gaji">Kenaikan Gaji (6 Bulan)</option>
-                      <option value="pangkat">Kenaikan Pangkat (6 Bulan)</option>
-                    </select>
-                    <button class="btn btn-primary" type="submit">
-                      Filter
-                    </button>
-                  </div>
+                    <div class="input-group" style="max-width: 600px;">
+                        <!-- Input Pencarian Nama atau NIP -->
+                        <input type="text" name="search" class="form-control" placeholder="Cari Nama atau NIP" value="{{ request('search') }}">
+            
+                        <!-- Dropdown Filter -->
+                        <select name="filter" class="form-select">
+                            <option value="" selected>Semua</option>
+                            <option value="gaji" {{ request('filter') == 'gaji' ? 'selected' : '' }}>Kenaikan Gaji (6 Bulan)</option>
+                            <option value="pangkat" {{ request('filter') == 'pangkat' ? 'selected' : '' }}>Kenaikan Pangkat (6 Bulan)</option>
+                        </select>
+            
+                        <button class="btn btn-primary" type="submit">Filter</button>
+                    </div>
                 </form>
-              </div>
-              
-              
+            </div>
+                          
               
               <div class="table-responsive text-nowrap">
                 <table class="table">

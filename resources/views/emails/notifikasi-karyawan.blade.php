@@ -58,8 +58,7 @@
     <div class="email-container">
         <!-- Header Section -->
         <div class="header">
-            <img src="{{ asset('img/logopn.png') }}" alt="Company Logo">
-            <h1>Nama Perusahaan Anda</h1>
+            <h1>Pengadilan Negeri Mungkid</h1>
             <h2>{{ $subjectText }}</h2>
         </div>
         <!-- Content Section -->
@@ -69,7 +68,7 @@
         </div>
         <!-- Footer Section -->
         <div class="footer">
-            &copy; {{ date('Y') }} Nama Perusahaan Anda. Semua Hak Dilindungi.
+            &copy; {{ date('Y') }} Pengadilan Mungkid. Semua Hak Dilindungi.
         </div>
     </div>
 </body>

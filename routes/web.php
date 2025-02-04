@@ -59,32 +59,41 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-   Route::get('/karyawan', function (Request $request) {
-    $columns = Schema::getColumnListing('karyawans'); // Ambil semua nama kolom dari tabel
-    $query = Karyawan::query();
-
-    // Filter pencarian berdasarkan nama atau NIP
-    if ($request->has('search') && $request->search != '') {
-        $search = $request->search;
-        $query->where('nama', 'LIKE', '%' . $search . '%')
-              ->orWhere('nip', 'LIKE', '%' . $search . '%');
-    }
-
-    // Filter berdasarkan gaji (tanggal_kenaikan_gaji <= 2 hari dari sekarang)
-    if ($request->has('filter') && $request->filter == 'gaji') {
-        $query->whereDate('tanggal_kenaikan_gaji', '<=', now()->addMonths(6));
-    }
-
-    // Filter berdasarkan pangkat (tanggal_kenaikan_pangkat <= 2 hari dari sekarang)
-    if ($request->has('filter') && $request->filter == 'pangkat') {
-        $query->whereDate('tanggal_kenaikan_pangkat', '<=', now()->addMonths(6));
-    }
-
-    // Retrieve the filtered data with pagination
-    $karyawans = $query->with(['jabatan', 'golongan'])->paginate(10);
-
-    return view('karyawan.karyawan', compact('karyawans', 'columns'));
-})->name('karyawan.karyawan');
+    Route::get('/karyawan', function (Request $request) {
+        $columns = Schema::getColumnListing('karyawans'); // Ambil semua nama kolom dari tabel
+        $query = Karyawan::query();
+    
+        // Filter pencarian berdasarkan nama atau NIP
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->where('nama', 'LIKE', '%' . $search . '%')
+                  ->orWhere('nip', 'LIKE', '%' . $search . '%');
+        }
+    
+        // Filter berdasarkan gaji (tanggal_kenaikan_gaji dalam rentang waktu 6 bulan dari sekarang)
+        if ($request->has('filter') && $request->filter == 'gaji') {
+            // Menggunakan whereBetween untuk rentang waktu 6 bulan
+            $query->whereBetween('tanggal_kenaikan_gaji', [
+                now()->toDateString(), // Sekarang
+                now()->addMonths(5)->toDateString() // 6 bulan ke depan
+            ]);
+        }
+    
+        // Filter berdasarkan pangkat (tanggal_kenaikan_pangkat dalam rentang waktu 6 bulan dari sekarang)
+        if ($request->has('filter') && $request->filter == 'pangkat') {
+            // Menggunakan whereBetween untuk rentang waktu 6 bulan
+            $query->whereBetween('tanggal_kenaikan_pangkat', [
+                now()->toDateString(), // Sekarang
+                now()->addMonths(5)->toDateString() // 6 bulan ke depan
+            ]);
+        }
+    
+        // Retrieve the filtered data with pagination
+        $karyawans = $query->with(['jabatan', 'golongan'])->paginate(10);
+    
+        return view('karyawan.karyawan', compact('karyawans', 'columns'));
+    })->name('karyawan.karyawan');
+    
 
 
     Route::post('/karyawan/tambah', [KaryawanController::class, 'store'])->name('karyawan.store');
