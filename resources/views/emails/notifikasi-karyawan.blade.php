@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $subjectText }}</title>
     <style>
         body {
@@ -52,23 +54,32 @@
             color: #888888;
             background: #f1f1f1;
         }
+        .footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
     <div class="email-container">
         <!-- Header Section -->
         <div class="header">
+            <!-- Logo Image (Embedded) -->
             <h1>Pengadilan Negeri Mungkid</h1>
             <h2>{{ $subjectText }}</h2>
         </div>
+
         <!-- Content Section -->
         <div class="content">
             <p>{{ $messageText }}</p>
             <p>Terima kasih telah menjadi bagian dari perjalanan kami. Jika Anda memiliki pertanyaan atau butuh bantuan, jangan ragu untuk menghubungi kami.</p>
         </div>
+
         <!-- Footer Section -->
         <div class="footer">
-            &copy; {{ date('Y') }} Pengadilan Mungkid. Semua Hak Dilindungi.
+            &copy; {{ date('Y') }} Pengadilan Negeri Mungkid. Semua Hak Dilindungi.
+            <br><br>
+            <a href="https://yusan-pamungkas-dev.vercel.app/">Developer</a> | <a href="https://pn-mungkid.go.id/main/">https://pn-mungkid.go.id/main/</a>
         </div>
     </div>
 </body>

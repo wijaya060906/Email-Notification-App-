@@ -38,7 +38,7 @@
         src: url('../assets/poppins-SemiBold.ttf') format('truetype');
       }
     </style>
-    <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Notifikasi Kepegawaian Pengadilan Negeri Mungkid</title>
 
     <meta name="description" content="" />
 
