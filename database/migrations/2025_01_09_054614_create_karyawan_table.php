@@ -24,7 +24,7 @@ return new class extends Migration
             $table->date('batas_usia_pensiun'); // Batas usia pensiun
             $table->string('email')->unique(); // Email karyawan
             $table->date('tanggal_lahir'); // Tanggal lahir
-            $table->enum('status', ['belum', 'terkirim', 'approved'])->default('belum'); // Status karyawan
+            $table->enum('status', ['gaji', 'pangkat', 'gaji dan pangkat','belum'])->default('belum'); // Status karyawan
             $table->decimal('gaji', 15, 2); // Gaji karyawan
             $table->timestamps();
         });

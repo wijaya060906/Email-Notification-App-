@@ -9,6 +9,7 @@ use App\Models\Karyawan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
  
 
 class KaryawanController extends Controller
@@ -181,7 +182,39 @@ public function update(Request $request, $id)
     return redirect()->route('karyawan.karyawan', compact('karyawans'));
 }
 
+public function updateStatus()
+{
+    // Ambil semua karyawan
+    $karyawans = Karyawan::all();
 
+    foreach ($karyawans as $karyawan) {
+        $now = Carbon::now();
 
+        // Cek apakah sudah 6 bulan dari tanggal kenaikan pangkat
+        $kenaikanPangkat = Carbon::parse($karyawan->tanggal_kenaikan_pangkat);
+        $kenaikanGaji = Carbon::parse($karyawan->tanggal_kenaikan_gaji);
 
+        $status = $karyawan->status;
+
+        // Cek status dan update jika perlu
+        if ($now->diffInMonths($kenaikanPangkat) >= 6 && $status !== 'pangkat') {
+            $status = 'pangkat';
+        }
+
+        if ($now->diffInMonths($kenaikanGaji) >= 6 && $status !== 'gaji') {
+            if ($status === 'pangkat') {
+                $status = 'gaji dan pangkat';
+            } else {
+                $status = 'gaji';
+            }
+        }
+
+        // Update status jika ada perubahan
+        if ($status !== $karyawan->status) {
+            $karyawan->update(['status' => $status]);
+        }
+    }
+
+    return redirect()->back()->with('success', 'Status karyawan telah diperbarui.');
+}
 }

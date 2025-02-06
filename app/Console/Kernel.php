@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Http\Controllers\KaryawanController;
 use App\Mail\NotifikasiKaryawan;
 use App\Models\Karyawan;
 use Illuminate\Console\Scheduling\Schedule;
@@ -42,6 +43,10 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             \Log::info('Laravel Schedule berhasil berjalan!');
         })->everyMinute();
+
+        $schedule->call(function () {
+            (new KaryawanController)->updateStatus();
+        })->daily();
     }
 
     /**

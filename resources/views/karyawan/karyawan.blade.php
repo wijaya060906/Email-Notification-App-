@@ -97,17 +97,18 @@
                                         <!-- Input Pencarian Nama atau NIP -->
                                         <input type="text" name="search" class="form-control"
                                             placeholder="Cari Nama atau NIP" value="{{ request('search') }}">
-
+                            
                                         <!-- Dropdown Filter -->
                                         <select name="filter" class="form-select">
                                             <option value="" selected>Semua</option>
                                             <option value="gaji" {{ request('filter') == 'gaji' ? 'selected' : '' }}>
                                                 Kenaikan Gaji (6 Bulan)</option>
-                                            <option value="pangkat"
-                                                {{ request('filter') == 'pangkat' ? 'selected' : '' }}>Kenaikan Pangkat
-                                                (6 Bulan)</option>
+                                            <option value="pangkat" {{ request('filter') == 'pangkat' ? 'selected' : '' }}>
+                                                Kenaikan Pangkat (6 Bulan)</option>
+                                            <option value="gaji dan pangkat" {{ request('filter') == 'gaji dan pangkat' ? 'selected' : '' }}>
+                                                Kenaikan Gaji dan Pangkat (6 Bulan)</option>
                                         </select>
-
+                            
                                         <button class="btn btn-primary" type="submit">Filter</button>
                                     </div>
                                 </form>
