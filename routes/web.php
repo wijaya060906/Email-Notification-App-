@@ -4,9 +4,11 @@ use App\Http\Controllers\GolonganController;
 use App\Http\Controllers\JabatanController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Models\Golongan;
 use App\Models\Jabatan;
 use App\Models\Karyawan;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Http\Request;
@@ -41,9 +43,9 @@ Route::get('/', function () {
 
     // Total notifikasi
     $totalNotifications = $incompleteDataCount + $contractEndingSoonCount;
-
     
-
+    
+    
     return view('dashboard', compact(
         'totalKaryawan', 
         'totalGmail', 
@@ -59,6 +61,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+ 
     Route::get('/karyawan', function (Request $request) {
         $columns = Schema::getColumnListing('karyawan'); // Ambil semua nama kolom dari tabel
         $query = Karyawan::query();
@@ -96,6 +99,9 @@ Route::middleware('auth')->group(function () {
         return view('karyawan.karyawan', compact('karyawans', 'columns'));
     })->name('karyawan.karyawan');
     
+
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
 
 
     Route::post('/karyawan/tambah', [KaryawanController::class, 'store'])->name('karyawan.store');

@@ -18,7 +18,7 @@
   class="light-style layout-menu-fixed"
   dir="ltr"
   data-theme="theme-default"
-  data-assets-path="{{asset('sneat')}}/assets/"
+  data-assets-path="{{ asset('sneat') }}/assets/"
   data-template="vertical-menu-template-free"
 >
   <head>
@@ -43,7 +43,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{asset('sneat')}}/assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('sneat') }}/assets/img/favicon/favicon.ico" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -54,26 +54,26 @@
     />
 
     <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="{{asset('sneat')}}/assets/vendor/fonts/boxicons.css" />
+    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/vendor/fonts/boxicons.css" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="{{asset('sneat')}}/assets/vendor/css/core.css" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{asset('sneat')}}/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="{{asset('sneat')}}/assets/css/demo.css" />
+    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/css/demo.css" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{asset('sneat')}}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
 
-    <link rel="stylesheet" href="{{asset('sneat')}}/assets/vendor/libs/apex-charts/apex-charts.css" />
+    <link rel="stylesheet" href="{{ asset('sneat') }}/assets/vendor/libs/apex-charts/apex-charts.css" />
 
     <!-- Page CSS -->
 
     <!-- Helpers -->
-    <script src="{{asset('sneat')}}/assets/vendor/js/helpers.js"></script>
+    <script src="{{ asset('sneat') }}/assets/vendor/js/helpers.js"></script>
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{{asset('sneat')}}/assets/js/config.js"></script>
+    <script src="{{ asset('sneat') }}/assets/js/config.js"></script>
   </head>
 
   <body>
@@ -95,25 +95,34 @@
                             <div class="d-flex align-items-center row">
                                 <!-- Left Side: Text Content -->
                                 <div class="col-sm-7">
-                                    <div class="card-body">
-                                        <h5 class="greeting-title" style="font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 30px; color: #8a5f02;">
-                                            Selamat Datang Di
-                                        </h5>
-                                        <h3 class="app-name" style="font-family: 'Jawa', sans-serif; font-weight: bold; font-size: 36px; color: black;">
-                                            ANOMAN
-                                        </h3>
-                                        <p class="app-description mb-4" style="font-size: 18px; color: #fff; line-height: 1.6;">
-                                            Aplikasi Notifikasi Administrasi Kepegawaian yang memberikan kemudahan bagi Anda dalam mengelola administrasi kepegawaian dengan cara yang lebih efisien dan terorganisir.
-                                        </p>
-                                        
-                                    </div>
-                                </div>
+                                  <div class="card-body">
+                                      <h5 class="greeting-title" style="font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 30px; color: #8a5f02;">
+                                          Selamat Datang Di
+                                      </h5>
+                                      <h3 class="app-name" style="font-family: 'Jawa', sans-serif; font-weight: bold; font-size: 36px; color: black;">
+                                          ANOMAN
+                                      </h3>
+                                      <p class="app-description mb-4" style="font-size: 18px; color: #fff; line-height: 1.6;">
+                                          Aplikasi Notifikasi Administrasi Kepegawaian yang memberikan kemudahan bagi Anda dalam mengelola administrasi kepegawaian dengan cara yang lebih efisien dan terorganisir.
+                                      </p>
+                                      
+                                      <!-- Tombol Profil -->
+                                      <form action="{{ url('/users/' . Auth::user()->id . '/edit') }}" method="GET" style="display: inline;">
+                                        @csrf
+                                        <button class="btn btn-warning" type="submit">Edit</button>
+                                    </form>
+                                    
+
+
+                                     
+                                  </div>
+                              </div>
                                 <!-- Right Side: Image -->
                                 <div class="col-sm-5">
                                   <div class="card-body pb-0 px-0 px-md-4" style="position: relative;">
                                       <!-- Wayang Image -->
                                       <img
-                                          src="{{asset('sneat')}}/assets/img/wayang.png"
+                                          src="{{ asset('sneat') }}/assets/img/wayang.png"
                                           height="200"
                                           alt="Wayang Image"
                                           class="img-fluid"
@@ -122,8 +131,8 @@
                                       
                                       <!-- Logo Image -->
                                       <img
-                                          src="{{asset('img/hanoman.png')}}"
-                                          height="90"  
+                                          src="{{ asset('img/hanoman.png') }}"
+                                          height="90"
                                           alt="Logo Image"
                                           style="position: absolute; top: 10px; right: 10px; width: auto; height: 80px;"
                                       />
@@ -170,7 +179,7 @@
                                 <div class="card-title d-flex align-items-start justify-content-between">
                                     <div class="avatar flex-shrink-0">
                                         <img
-                                            src="{{asset('sneat')}}/assets/img/icons/unicons/user-detail-solid-24.png"
+                                            src="{{ asset('sneat') }}/assets/img/icons/unicons/user-detail-solid-24.png"
                                             alt="chart success"
                                             class="rounded"
                                         />
@@ -187,7 +196,7 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                                            <a class="dropdown-item" href="{{route('karyawan.karyawan')}}">View More</a>
+                                            <a class="dropdown-item" href="{{ route('karyawan.karyawan') }}">View More</a>
                                         </div>
                                     </div>
                                 </div>
@@ -204,7 +213,7 @@
                                 <div class="card-title d-flex align-items-start justify-content-between">
                                     <div class="avatar flex-shrink-0">
                                         <img
-                                            src="{{asset('sneat')}}/assets/img/icons/unicons/mail.png"
+                                            src="{{ asset('sneat') }}/assets/img/icons/unicons/mail.png"
                                             alt="Credit Card"
                                             class="rounded"
                                         />
@@ -221,7 +230,7 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                                            <a class="dropdown-item" href="{{route('karyawan.karyawan')}}">View More</a>
+                                            <a class="dropdown-item" href="{{ route('karyawan.karyawan') }}">View More</a>
                                         </div>
                                     </div>
                                 </div>
@@ -255,7 +264,7 @@
       <ul class="p-0 m-0">
         <li class="d-flex mb-4 pb-1">
           <div class="avatar flex-shrink-0 me-3">
-            <img src="{{asset('sneat')}}/assets/img/icons/unicons/add.png" alt="User " class="rounded" />
+            <img src="{{ asset('sneat') }}/assets/img/icons/unicons/add.png" alt="User " class="rounded" />
           </div>
           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
             <div class="me-2">
@@ -266,7 +275,7 @@
         </li>
         <li class="d-flex mb-4 pb-1">
           <div class="avatar flex-shrink-0 me-3">
-            <img src="{{asset('sneat')}}/assets/img/icons/unicons/edit.png" alt="User " class="rounded" />
+            <img src="{{ asset('sneat') }}/assets/img/icons/unicons/edit.png" alt="User " class="rounded" />
           </div>
           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
             <div class="me-2">
@@ -277,7 +286,7 @@
         </li>
         <li class="d-flex mb-4 pb-1">
           <div class="avatar flex-shrink-0 me-3">
-            <img src="{{asset('sneat')}}/assets/img/icons/unicons/del.png" alt="User " class="rounded" />
+            <img src="{{ asset('sneat') }}/assets/img/icons/unicons/del.png" alt="User " class="rounded" />
           </div>
           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
             <div class="me-2">
@@ -288,7 +297,7 @@
         </li>
         <li class="d-flex mb-4 pb-1">
           <div class="avatar flex-shrink-0 me-3">
-            <img src="{{asset('sneat')}}/assets/img/icons/unicons/read.png" alt="User " class="rounded" />
+            <img src="{{ asset('sneat') }}/assets/img/icons/unicons/read.png" alt="User " class="rounded" />
           </div>
           <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
             <div class="me-2">
@@ -397,7 +406,7 @@
                                 <i class="bx bx-dots-vertical-rounded"></i>
                               </button>
                               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOptIncomplete">
-                                <a class="dropdown-item" href="{{route('karyawan.karyawan')}}">View More</a>
+                                <a class="dropdown-item" href="{{ route('karyawan.karyawan') }}">View More</a>
                               </div>
                             </div>
                           </div>
@@ -425,7 +434,7 @@
                                 <i class="bx bx-dots-vertical-rounded"></i>
                               </button>
                               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOptContract">
-                                <a class="dropdown-item" href="{{route('karyawan.karyawan')}}">View More</a>
+                                <a class="dropdown-item" href="{{ route('karyawan.karyawan') }}">View More</a>
                               </div>
                             </div>
                           </div>
@@ -485,22 +494,22 @@
    
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
-    <script src="{{asset('sneat')}}/assets/vendor/libs/jquery/jquery.js"></script>
-    <script src="{{asset('sneat')}}/assets/vendor/libs/popper/popper.js"></script>
-    <script src="{{asset('sneat')}}/assets/vendor/js/bootstrap.js"></script>
-    <script src="{{asset('sneat')}}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    <script src="{{ asset('sneat') }}/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="{{ asset('sneat') }}/assets/vendor/libs/popper/popper.js"></script>
+    <script src="{{ asset('sneat') }}/assets/vendor/js/bootstrap.js"></script>
+    <script src="{{ asset('sneat') }}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
-    <script src="{{asset('sneat')}}/assets/vendor/js/menu.js"></script>
+    <script src="{{ asset('sneat') }}/assets/vendor/js/menu.js"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->
-    <script src="{{asset('sneat')}}/assets/vendor/libs/apex-charts/apexcharts.js"></script>
+    <script src="{{ asset('sneat') }}/assets/vendor/libs/apex-charts/apexcharts.js"></script>
 
     <!-- Main JS -->
-    <script src="{{asset('sneat')}}/assets/js/main.js"></script>
+    <script src="{{ asset('sneat') }}/assets/js/main.js"></script>
 
     <!-- Page JS -->
-    <script src="{{asset('sneat')}}/assets/js/dashboards-analytics.js"></script>
+    <script src="{{ asset('sneat') }}/assets/js/dashboards-analytics.js"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
