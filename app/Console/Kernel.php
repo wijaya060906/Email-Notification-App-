@@ -41,6 +41,17 @@ class Kernel extends ConsoleKernel
         })->everyMinute();
 
         $schedule->call(function () {
+            $karyawans = Karyawan::whereDate('batas_usia_pensiun', now()->addMonths(15)->toDateString())->get();
+
+            foreach ($karyawans as $karyawan) {
+                $subject = "Notifikasi Pensiun";
+                $message = "Halo {$karyawan->nama}, Mohon Di Persiapkan Berkas Berkas Untuk Kepensiunan Anda ya agar tidak terlambat";
+
+                Mail::to($karyawan->email)->send(new NotifikasiKaryawan($subject, $message));
+            }
+        })->everyMinute();
+
+        $schedule->call(function () {
             \Log::info('Laravel Schedule berhasil berjalan!');
         })->everyMinute();
 
