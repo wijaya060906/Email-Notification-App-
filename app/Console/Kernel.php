@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
 
         // Notifikasi Gaji
         $schedule->call(function () {
-            $karyawans = Karyawan::whereDate('tanggal_kenaikan_gaji', now()->addMonths(6)->toDateString())->get();
+            $karyawans = Karyawan::whereDate('tanggal_kenaikan_gaji', now()->addMonths(3)->toDateString())->get();
 
             foreach ($karyawans as $karyawan) {
                 $subject = "Notifikasi Gaji";
